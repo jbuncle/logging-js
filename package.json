@@ -1,0 +1,16 @@
+{
+    "name": "@jbuncle/logging-js",
+    "version": "1.0.0",
+    "description": "Simple logging library",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "build": "tsc --strict -p ./tsconfig.json"
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "@types/node": "^12.7.12",
+        "ts-node": "^4.1.0",
+        "typescript": "^2.9.2"
+    }
+}
