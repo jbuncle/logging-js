@@ -2,8 +2,8 @@
  * @copyright 2019 James Buncle <jbuncle@hotmail.com>
  */
 
-import {LoggerInterface} from "./LoggerInterface";
-import {LoggerFactory} from "./LoggerFactory";
+import type {LoggerInterface} from "./LoggerInterface";
+import type {LoggerFactory} from "./LoggerFactory";
 import {NullLogger} from "./Loggers/NullLogger";
 
 /**

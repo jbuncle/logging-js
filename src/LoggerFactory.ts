@@ -2,13 +2,13 @@
  * @copyright 2019 James Buncle <jbuncle@hotmail.com>
  */
 
-import {LoggerInterface} from "./LoggerInterface";
+import type {LoggerInterface} from "./LoggerInterface";
 
 /**
  * LoggerFactory.
  */
 export interface LoggerFactory {
 
-    getLogger(): LoggerInterface;
+    getLogger: () => LoggerInterface;
 
 }

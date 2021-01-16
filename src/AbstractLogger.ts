@@ -1,9 +1,8 @@
-import {LoggerInterface} from "./LoggerInterface";
-import {LogLevel} from "./LogLevel";
+import type { LoggerInterface } from "./LoggerInterface";
+import { LogLevel } from "./LogLevel";
 
 export abstract class AbstractLogger implements LoggerInterface {
 
-    abstract log(level: LogLevel, message: string, context: {[s: string]: any}): void;
     /**
      * System is unusable.
      *
@@ -12,8 +11,8 @@ export abstract class AbstractLogger implements LoggerInterface {
      *
      * @return void
      */
-    public emergency(message: string, context: {[s: string]: string}) {
-        this.log(LogLevel.EMERGENCY, message, context);
+    public emergency(message: string, ...context: unknown[]): void {
+        this.log(LogLevel.EMERGENCY, message, ...context);
     }
 
     /**
@@ -27,8 +26,8 @@ export abstract class AbstractLogger implements LoggerInterface {
      *
      * @return void
      */
-    public alert(message: string, context: {[s: string]: string}) {
-        this.log(LogLevel.ALERT, message, context);
+    public alert(message: string, ...context: unknown[]): void {
+        this.log(LogLevel.ALERT, message, ...context);
     }
 
     /**
@@ -41,8 +40,8 @@ export abstract class AbstractLogger implements LoggerInterface {
      *
      * @return void
      */
-    public critical(message: string, context: {[s: string]: string}) {
-        this.log(LogLevel.CRITICAL, message, context);
+    public critical(message: string, ...context: unknown[]): void {
+        this.log(LogLevel.CRITICAL, message, ...context);
     }
 
     /**
@@ -54,8 +53,8 @@ export abstract class AbstractLogger implements LoggerInterface {
      *
      * @return void
      */
-    public error(message: string, context: {[s: string]: string}) {
-        this.log(LogLevel.ERROR, message, context);
+    public error(message: string, ...context: unknown[]): void {
+        this.log(LogLevel.ERROR, message, ...context);
     }
 
     /**
@@ -69,8 +68,8 @@ export abstract class AbstractLogger implements LoggerInterface {
      *
      * @return void
      */
-    public warning(message: string, context: {[s: string]: string}) {
-        this.log(LogLevel.WARNING, message, context);
+    public warning(message: string, ...context: unknown[]): void {
+        this.log(LogLevel.WARNING, message, ...context);
     }
 
     /**
@@ -81,8 +80,8 @@ export abstract class AbstractLogger implements LoggerInterface {
      *
      * @return void
      */
-    public notice(message: string, context: {[s: string]: string}) {
-        this.log(LogLevel.NOTICE, message, context);
+    public notice(message: string, ...context: unknown[]): void {
+        this.log(LogLevel.NOTICE, message, ...context);
     }
 
     /**
@@ -95,8 +94,8 @@ export abstract class AbstractLogger implements LoggerInterface {
      *
      * @return void
      */
-    public info(message: string, context: {[s: string]: string}) {
-        this.log(LogLevel.INFO, message, context);
+    public info(message: string, ...context: unknown[]): void {
+        this.log(LogLevel.INFO, message, ...context);
     }
 
     /**
@@ -107,7 +106,9 @@ export abstract class AbstractLogger implements LoggerInterface {
      *
      * @return void
      */
-    public debug(message: string, context: {[s: string]: string}) {
-        this.log(LogLevel.DEBUG, message, context);
+    public debug(message: string, ...context: unknown[]): void {
+        this.log(LogLevel.DEBUG, message, ...context);
     }
+
+    abstract log(level: LogLevel, message: string, ...context: unknown[]): void;
 }

@@ -1,6 +1,6 @@
-import {LoggerInterface} from "../LoggerInterface";
+import type {LoggerInterface} from "../LoggerInterface";
 import {AbstractLogger} from "../AbstractLogger";
-import {LogLevel} from "../LogLevel";
+import type {LogLevel} from "../LogLevel";
 
 export class MultiLogger extends AbstractLogger {
 
@@ -8,16 +8,16 @@ export class MultiLogger extends AbstractLogger {
      *
      * @var array<LoggerInterface>
      */
-    private readonly loggers: Array<LoggerInterface>;
+    private readonly loggers: LoggerInterface[];
 
     /**
      *
      * @param array<LoggerInterface> loggers
      */
-    public constructor(loggers: Array<LoggerInterface> = []) {
+    public constructor(loggers: LoggerInterface[] = []) {
         super();
         this.loggers = new Array<LoggerInterface>();
-        for (let item of loggers) {
+        for (const item of loggers) {
             this.loggers.push(item);
         }
     }
@@ -37,9 +37,9 @@ export class MultiLogger extends AbstractLogger {
      *
      * @return void
      */
-    public log(level: LogLevel, message: string, context: {[s: string]: string}) {
-        for (let item of this.loggers) {
-            item.log(level, message, context);
+    public log(level: LogLevel, message: string, ...context: unknown[]): void {
+        for (const item of this.loggers) {
+            item.log(level, message, ...context);
         }
     }
 

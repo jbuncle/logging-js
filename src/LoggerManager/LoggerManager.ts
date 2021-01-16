@@ -1,12 +1,12 @@
-import {LogLevel} from "../LogLevel";
-import {AbstractLogger} from "../AbstractLogger";
-import {LoggerInterface} from "../LoggerInterface";
-import {LoggerFactory} from "../LoggerFactory";
-import {MultiLogger} from "../Loggers/MultiLogger";
+import type { LogLevel } from "../LogLevel";
+import { AbstractLogger } from "../AbstractLogger";
+import type { LoggerInterface } from "../LoggerInterface";
+import type { LoggerFactory } from "../LoggerFactory";
+import { MultiLogger } from "../Loggers/MultiLogger";
 
 export class LoggerManager extends AbstractLogger implements LoggerFactory {
 
-        private readonly logger: MultiLogger
+    private readonly logger: MultiLogger
 
     public constructor() {
         super();
@@ -30,7 +30,7 @@ export class LoggerManager extends AbstractLogger implements LoggerFactory {
      *
      * @return void
      */
-    public log(level: LogLevel, message: string, context: {[s: string]: string}) {
+    public log(level: LogLevel, message: string, ...context: unknown[]): void {
         this.getLogger().log(level, message, context);
     }
 

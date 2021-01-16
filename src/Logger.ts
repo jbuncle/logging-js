@@ -1,10 +1,13 @@
+/* eslint-disable @typescript-eslint/strict-boolean-expressions */
+/* eslint-disable @typescript-eslint/no-extraneous-class */
+/* eslint-disable @typescript-eslint/no-unnecessary-condition */
 /**
  * @copyright 2019 James Buncle <jbuncle@hotmail.com>
  */
 
 import {LoggerManager} from "./LoggerManager/LoggerManager";
-import {LoggerInterface} from "./LoggerInterface";
-import {LogLevel} from "./LogLevel";
+import type {LoggerInterface} from "./LoggerInterface";
+import type {LogLevel} from "./LogLevel";
 
 /**
  * Convenience class for logging.
@@ -16,14 +19,6 @@ export class Logger {
      * @var LoggerManager
      */
     private static logger: LoggerManager;
-
-    private static getInstance(): LoggerManager {
-        if (!this.logger) {
-            this.logger = new LoggerManager();
-        }
-
-        return this.logger;
-    }
 
     public static addLogger(logger: LoggerInterface): void {
         this.getInstance().addLogger(logger);
@@ -40,8 +35,8 @@ export class Logger {
      *
      * @return void
      */
-    public static debug(message: string, context: {[s: string]: string}): void {
-        this.getInstance().debug(message, context);
+    public static debug(message: string, ...context: unknown[]): void {
+        this.getInstance().debug(message, ...context);
     }
 
     /**
@@ -51,8 +46,8 @@ export class Logger {
      *
      * @return void
      */
-    public static error(message: string, context: {[s: string]: string}): void {
-        this.getInstance().error(message, context);
+    public static error(message: string, ...context: unknown[]): void {
+        this.getInstance().error(message, ...context);
     }
 
     /**
@@ -62,8 +57,8 @@ export class Logger {
      *
      * @return void
      */
-    public static information(message: string, context: {[s: string]: string}): void {
-        this.getInstance().info(message, context);
+    public static information(message: string, ...context: unknown[]): void {
+        this.getInstance().info(message, ...context);
     }
 
     /**
@@ -73,8 +68,8 @@ export class Logger {
      *
      * @return void
      */
-    public static notice(message: string, context: {[s: string]: string}): void {
-        this.getInstance().notice(message, context);
+    public static notice(message: string, ...context: unknown[]): void {
+        this.getInstance().notice(message, ...context);
     }
 
     /**
@@ -84,8 +79,8 @@ export class Logger {
      *
      * @return void
      */
-    public static warning(message: string, context: {[s: string]: string}): void {
-        this.getInstance().warning(message, context);
+    public static warning(message: string, ...context: unknown[]): void {
+        this.getInstance().warning(message, ...context);
     }
 
     /**
@@ -95,7 +90,15 @@ export class Logger {
      *
      * @return void
      */
-    public static log( level: LogLevel, message: string, context: {[s: string]: string}): void {
-        this.getInstance().log(level, message, context);
+    public static log( level: LogLevel, message: string, ...context: unknown[]): void {
+        this.getInstance().log(level, message, ...context);
+    }
+
+    private static getInstance(): LoggerManager {
+        if (!this.logger) {
+            this.logger = new LoggerManager();
+        }
+
+        return this.logger;
     }
 }
