@@ -1,15 +1,19 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 export enum LogLevel {
-    EMERGENCY = 'emergency',
-    ALERT = 'alert',
-    CRITICAL = 'critical',
-    ERROR = 'error',
-    WARNING = 'warning',
-    NOTICE = 'notice',
-    INFO = 'info',
-    DEBUG = 'debug',
+    EMERGENCY = `emergency`,
+    ALERT = `alert`,
+    CRITICAL = `critical`,
+    ERROR = `error`,
+    WARNING = `warning`,
+    NOTICE = `notice`,
+    INFO = `info`,
+    DEBUG = `debug`,
 }
 
+/**
+ * 
+ * @param level Convert log level to a number
+ */
 export function levelToNum(level: LogLevel): number {
     switch (level) {
         case LogLevel.EMERGENCY:

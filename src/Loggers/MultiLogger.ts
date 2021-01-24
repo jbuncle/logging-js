@@ -2,6 +2,9 @@ import type {LoggerInterface} from "../LoggerInterface";
 import {AbstractLogger} from "../AbstractLogger";
 import type {LogLevel} from "../LogLevel";
 
+/**
+ * Logger combining multiple loggers into a single instance.
+ */
 export class MultiLogger extends AbstractLogger {
 
     /**

@@ -3,6 +3,9 @@ import { AbstractLogger } from "../AbstractLogger";
 import type { LoggerInterface } from "../LoggerInterface";
 import { levelToNum } from "../LogLevel";
 
+/**
+ * LogLevel Wrapper - Wraps a Logger to filter messages based on log level.
+ */
 export class LogLevelWrapper extends AbstractLogger implements LoggerInterface {
 
     private readonly level: number;

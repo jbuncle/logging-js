@@ -24,8 +24,8 @@ export class Logger {
         this.getInstance().addLogger(logger);
     }
 
-    public static getLogger(): LoggerInterface {
-        return this.getInstance().getLogger();
+    public static getLogger(id?: string): LoggerInterface {
+        return this.getInstance().getLogger(id);
     }
 
     /**

@@ -1,6 +1,9 @@
 import type { LoggerInterface } from "./LoggerInterface";
 import { LogLevel } from "./LogLevel";
 
+/**
+ * AbstractLogger - defines each log level method leaving just the "log" method to be implemented. 
+ */
 export abstract class AbstractLogger implements LoggerInterface {
 
     /**

@@ -4,6 +4,9 @@ import type { LoggerInterface } from "../LoggerInterface";
 import type { LoggerFactory } from "../LoggerFactory";
 import { MultiLogger } from "../Loggers/MultiLogger";
 
+/**
+ * Managers loggers.
+ */
 export class LoggerManager extends AbstractLogger implements LoggerFactory {
 
     private readonly logger: MultiLogger
