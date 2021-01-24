@@ -9,6 +9,6 @@ import type {LoggerInterface} from "./LoggerInterface";
  */
 export interface LoggerFactory {
 
-    getLogger: () => LoggerInterface;
+    getLogger: (id?: string) => LoggerInterface;
 
 }
