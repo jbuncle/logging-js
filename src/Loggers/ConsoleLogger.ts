@@ -60,8 +60,7 @@ export class ConsoleLogger extends AbstractLogger {
     }
 
     private getDateTime(): string {
-        const date: Date = new Date();
-        return `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
+        return new Date().toISOString();
     }
 
 }
