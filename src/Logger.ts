@@ -8,6 +8,7 @@
 import {LoggerManager} from "./LoggerManager/LoggerManager";
 import type {LoggerInterface} from "./LoggerInterface";
 import type {LogLevel} from "./LogLevel";
+import type { LoggerFactory } from "./LoggerFactory";
 
 /**
  * Convenience class for logging.
@@ -20,8 +21,8 @@ export class Logger {
      */
     private static logger: LoggerManager;
 
-    public static addLogger(logger: LoggerInterface): void {
-        this.getInstance().addLogger(logger);
+    public static setLoggerFactory(loggerFactory: LoggerFactory): void {
+        this.getInstance().setLoggerFactory(loggerFactory);
     }
 
     public static getLogger(id?: string): LoggerInterface {

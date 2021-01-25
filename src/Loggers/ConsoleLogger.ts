@@ -12,16 +12,16 @@ import { LogLevel } from "../LogLevel";
 export class ConsoleLogger extends AbstractLogger {
 
 
-    private readonly messagePrefix: string;
+    private readonly identifier: string;
 
     public constructor(
         id?: string,
     ) {
         super();
         if (id === undefined) {
-            this.messagePrefix = ``;
+            this.identifier = ``;
         } else {
-            this.messagePrefix = `${id} - `;
+            this.identifier = `${id} - `;
         }
     }
 
@@ -56,7 +56,7 @@ export class ConsoleLogger extends AbstractLogger {
     private createLogMessage(level: LogLevel, message: string): string {
         const levelStr: string = level.toUpperCase();
         const dateTimeString: string = this.getDateTime();
-        return `[${dateTimeString}] ${this.messagePrefix}${levelStr}: ${message}`;
+        return `[${dateTimeString}] ${levelStr}: ${this.identifier}${message}`;
     }
 
     private getDateTime(): string {

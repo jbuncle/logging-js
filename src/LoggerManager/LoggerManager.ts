@@ -3,26 +3,26 @@ import type { LogLevel } from "../LogLevel";
 import { AbstractLogger } from "../AbstractLogger";
 import type { LoggerInterface } from "../LoggerInterface";
 import type { LoggerFactory } from "../LoggerFactory";
-import { MultiLogger } from "../Loggers/MultiLogger";
+import { NullLoggerFactory } from "../NullLoggerFactory";
 
 /**
  * Managers loggers.
  */
 export class LoggerManager extends AbstractLogger implements LoggerFactory {
 
-    private readonly logger: MultiLogger
+    private loggerFactory: LoggerFactory
 
     public constructor() {
         super();
-        this.logger = new MultiLogger();
+        this.loggerFactory = new NullLoggerFactory();
     }
 
-    public addLogger(logger: LoggerInterface): void {
-        this.logger.addLogger(logger);
+    public setLoggerFactory(loggerFactory: LoggerFactory): void {
+        this.loggerFactory = loggerFactory;
     }
 
     public getLogger(id?: string): LoggerInterface {
-        return this.logger;
+        return this.loggerFactory.getLogger(id);
     }
 
     /**
