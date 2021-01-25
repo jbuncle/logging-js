@@ -11,13 +11,25 @@ import { LogLevel } from "../LogLevel";
  */
 export class ConsoleLogger extends AbstractLogger {
 
+
+    private readonly messagePrefix: string;
+
+    public constructor(
+        id?: string,
+    ) {
+        super();
+        if (id === undefined) {
+            this.messagePrefix = ``;
+        } else {
+            this.messagePrefix = `${id} - `;
+        }
+    }
+
     /**
      * Log with given arbitrary level.
      */
     public log(level: LogLevel, message: string, ...context: unknown[]): void {
-        const levelStr: string = level.toUpperCase();
-
-        const logMessage: string = `${levelStr}: ${message}`;
+        const logMessage: string = this.createLogMessage(level, message);
 
         switch (level) {
             case LogLevel.EMERGENCY:
@@ -39,6 +51,17 @@ export class ConsoleLogger extends AbstractLogger {
             default:
                 console.log(logMessage, ...context);
         }
+    }
+
+    private createLogMessage(level: LogLevel, message: string): string {
+        const levelStr: string = level.toUpperCase();
+        const dateTimeString: string = this.getDateTime();
+        return `[${dateTimeString}] ${this.messagePrefix}${levelStr}: ${message}`;
+    }
+
+    private getDateTime(): string {
+        const date: Date = new Date();
+        return `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
     }
 
 }

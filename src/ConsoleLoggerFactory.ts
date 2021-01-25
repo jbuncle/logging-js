@@ -5,7 +5,7 @@
 import type { LoggerFactory } from "./LoggerFactory";
 import { ConsoleLogger } from "./Loggers/ConsoleLogger";
 import type { LoggerInterface } from "./LoggerInterface";
-import { LogLevelWrapper } from "./Wrapper/LogLevelWrapper";
+import { LogLevelWrapper } from "./Wrappers/LogLevelWrapper";
 import { LogLevel } from "./LogLevel";
 
 /**
@@ -17,8 +17,8 @@ export class ConsoleLoggerFactory implements LoggerFactory {
         private readonly level: LogLevel = LogLevel.DEBUG,
     ) { }
 
-    public getLogger(): LoggerInterface {
-        const consoleLogger: ConsoleLogger = new ConsoleLogger();
+    public getLogger(id?: string): LoggerInterface {
+        const consoleLogger: ConsoleLogger = new ConsoleLogger(id);
 
         return new LogLevelWrapper(consoleLogger, this.level);
     }
