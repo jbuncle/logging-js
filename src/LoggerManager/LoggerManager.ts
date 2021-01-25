@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import type { LogLevel } from "../LogLevel";
 import { AbstractLogger } from "../AbstractLogger";
 import type { LoggerInterface } from "../LoggerInterface";
@@ -20,7 +21,7 @@ export class LoggerManager extends AbstractLogger implements LoggerFactory {
         this.logger.addLogger(logger);
     }
 
-    public getLogger(): LoggerInterface {
+    public getLogger(id?: string): LoggerInterface {
         return this.logger;
     }
 
