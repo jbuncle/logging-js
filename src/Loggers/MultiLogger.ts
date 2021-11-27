@@ -25,7 +25,7 @@ export class MultiLogger extends AbstractLogger {
         }
     }
 
-    public addLogger(logger: LoggerInterface): MultiLogger {
+    public addLogger(logger: LoggerInterface): this {
         this.loggers.push(logger);
 
         return this;

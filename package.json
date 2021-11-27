@@ -10,6 +10,9 @@
         "lint": "eslint -c .eslintrc.json --ext .ts ./src",
         "lint-fix": "eslint --fix -c .eslintrc.json --ext .ts ./src"
     },
+    "files": [
+        "dist/"
+    ],
     "devDependencies": {
         "@jbuncle/eslint-config-jbuncle": "^1.6.3",
         "@types/node": "^14.14.22",

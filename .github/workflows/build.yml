@@ -24,6 +24,10 @@ jobs:
           registry-url: 'https://npm.pkg.github.com'
           scope: '@jbuncle'
 
-      - run: npm publish --tag ${{ env.RELEASE_VERSION }}
+      - run: npm install
+      - run: npm run build
+      - run: npm pack
+      - run: echo "RELEASE=$(ls *.tgz | tail -n 1)" >> $GITHUB_ENV
+      - run: npm publish --tag ${{ env.RELEASE_VERSION }} ${{ env.RELEASE }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
