@@ -18,7 +18,7 @@ jobs:
 
       - run: npm config set git-tag-version false 
       - run: npm config set @jbuncle:registry https://npm.pkg.github.com
-      - run: npm config set //npm.pkg.github.com/:_authToken ${GITHUB_TOKEN}
+      - run: npm config set //npm.pkg.github.com/:_authToken ${{ secrets.GITHUB_TOKEN }}
 
       - run: npm version ${RELEASE_VERSION} 
 
