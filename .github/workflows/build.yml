@@ -16,13 +16,10 @@ jobs:
       - name: Get tag/version
         run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
 
-      - run: npm config set git-tag-version false
+      - run: npm config set git-tag-version false 
+      - run: npm config set @jbuncle:registry https://npm.pkg.github.com
+
       - run: npm version ${{ env.RELEASE_VERSION }}
-  
-      - uses: actions/setup-node@v2
-        with:
-          registry-url: 'https://npm.pkg.github.com'
-          scope: '@jbuncle'
 
       - run: npm install
       - run: npm run build
