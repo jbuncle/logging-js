@@ -26,4 +26,4 @@ jobs:
       - run: npm run build
       - run: npm pack
       - run: echo "RELEASE=$(ls *.tgz | tail -n 1)" >> $GITHUB_ENV
-      - run: npm publish --tag ${{ env.RELEASE_VERSION }} ${{ env.RELEASE }}
+      - run: npm publish ${{ env.RELEASE }}
